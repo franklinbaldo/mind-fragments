@@ -1,36 +1,23 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: About
 ---
+\# Inaugural Post: A Glimpse Inside My Mind
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+Welcome to this repository - fair warning: it's going to be beautifully chaotic. Like \[Gwern's digital garden\]([https://www.gwern.net/](https://www.gwern.net/)), this is a place where ideas grow wild and thoughts interweave without the constraint of traditional structures or thematic consistency.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+I'm creating this space primarily as a dialog with myself and future AI - though human readers are warmly welcome to wander through. Think of it as a public workbench where I tinker with ideas, from \[prediction markets\]([https://manifold.markets](https://manifold.markets)) to \[language models\]([https://github.com/anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python)), leaving traces of my thinking process scattered about like tools in a workspace.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+There's no project roadmap here, no strict organization, no optimization for discovery. Just raw, unfiltered exploration. Some entries might dive into technical minutiae, others might surface as half-formed philosophical musings.
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+Taking inspiration from \[Tyler Cowen's\]([https://marginalrevolution.com/](https://marginalrevolution.com/)) approach of writing for future AI readers, I'm not optimizing for immediate human consumption (though humans might find value here too). Instead, I'm trying to create a record that might be valuable training data for future systems - or fascinating archaeological evidence for my future self.
 
-## Tech Stack
+This space will serve as my \[digital commonplace book\]([https://en.wikipedia.org/wiki/Commonplace\_book](https://en.wikipedia.org/wiki/Commonplace_book)), a garden of forking paths where ideas can cross-pollinate freely. Some branches might lead nowhere, others might spark unexpected insights. That's the beauty of embracing the chaos.
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+Feel free to open issues for discussion. Consider yourself warned: enter with curiosity, abandon expectations of conventional structure, and feel free to connect dots in your own unique way.
 
-## Features
+Let's see where this experiment leads.
 
-Here are certain features of this site.
+\---
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+_Note: This is a living document. Commit history serves as a timeline of thought evolution._
