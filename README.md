@@ -1,158 +1,87 @@
-# AstroPaper 📄
+# Google Drive and LLM Integration Test
 
-![AstroPaper](public/astropaper-og.jpg)
-![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![GitHub](https://img.shields.io/github/license/satnaing/astro-paper?color=%232F3741&style=for-the-badge)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge)](https://conventionalcommits.org)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
+This project demonstrates an end-to-end integration of fetching Google Drive activity, extracting text content from a selected file (prioritizing Google Documents), and processing that content with a Google Gemini Pro LLM to generate blog-worthy text with PII removed.
 
-AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog theme. This theme is designed and crafted based on [my personal blog](https://satnaing.dev/blog).
+The system consists of three main Python scripts:
+1.  `fetch_drive_activity.py`: Connects to Google Drive, fetches metadata of recent files, and can export Google Document content.
+2.  `llm_interaction.py`: Interfaces with the Google Gemini Pro LLM to process text.
+3.  `run_integration_test.py`: Orchestrates the integration test by using the other two modules.
 
-This theme follows best practices and provides accessibility out of the box. Light and dark mode are supported by default. Moreover, additional color schemes can also be configured.
+## Prerequisites
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. Read [the blog posts](https://astro-paper.pages.dev/posts/) or check [the README Documentation Section](#-documentation) for more info.
+Before running the integration test, ensure you have the following:
 
-## 🔥 Features
+1.  **Python Environment:**
+    *   Python 3.7+
+    *   Install necessary libraries:
+        ```bash
+        pip install -r requirements.txt
+        ```
+        (The `requirements.txt` should include `google-api-python-client`, `google-auth-httplib2`, `google-auth-oauthlib`, and `google-generativeai`.)
 
-- [x] type-safe markdown
-- [x] super fast performance
-- [x] accessible (Keyboard/VoiceOver)
-- [x] responsive (mobile ~ desktops)
-- [x] SEO-friendly
-- [x] light & dark mode
-- [x] fuzzy search
-- [x] draft posts & pagination
-- [x] sitemap & rss feed
-- [x] followed best practices
-- [x] highly customizable
-- [x] dynamic OG image generation for blog posts [#15](https://github.com/satnaing/astro-paper/pull/15) ([Blog Post](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/))
+2.  **Google Drive API Credentials (`credentials.json`):**
+    *   Set up a Google Cloud Project and enable the Google Drive API.
+    *   Create OAuth 2.0 credentials for a "Desktop app".
+    *   Download the credentials JSON file and save it as `credentials.json` in the same directory as the scripts.
+    *   The first time `fetch_drive_activity.py` (or `run_integration_test.py`) runs, it will open a browser window for you to authorize access. Upon successful authorization, a `token.json` file will be created to store your access tokens for future runs.
 
-_Note: I've tested screen-reader accessibility of AstroPaper using **VoiceOver** on Mac and **TalkBack** on Android. I couldn't test all other screen-readers out there. However, accessibility enhancements in AstroPaper should be working fine on others as well._
+3.  **Google Generative AI API Key (`GEMINI_API_KEY`):**
+    *   Obtain an API key from [Google AI Studio](https://makersuite.google.com/).
+    *   Set this key as an environment variable named `GEMINI_API_KEY`.
+        *   **Linux/macOS:** `export GEMINI_API_KEY="YOUR_API_KEY_HERE"` (add to `~/.bashrc` or `~/.zshrc` for permanence).
+        *   **Windows (Command Prompt):** `setx GEMINI_API_KEY "YOUR_API_KEY_HERE"` (may require terminal restart).
+        *   **Windows (PowerShell):** `$Env:GEMINI_API_KEY="YOUR_API_KEY_HERE"` (for current session; use system environment variable settings for permanence).
 
-## ✅ Lighthouse Score
+## How to Run the Integration Test
 
-<p align="center">
-  <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fastro-paper.pages.dev%2F&form_factor=desktop">
-    <img width="710" alt="AstroPaper Lighthouse Score" src="AstroPaper-lighthouse-score.svg">
-  <a>
-</p>
+1.  Ensure all prerequisites above are met (`credentials.json` is present, `GEMINI_API_KEY` is set, libraries installed).
+2.  Navigate to the directory containing the scripts (`fetch_drive_activity.py`, `llm_interaction.py`, `run_integration_test.py`).
+3.  Execute the integration test script from your terminal:
 
-## 🚀 Project Structure
+    ```bash
+    python run_integration_test.py
+    ```
 
-Inside of AstroPaper, you'll see the following folders and files:
+## What the Script Does
 
-```bash
-/
-├── public/
-│   ├── assets/
-│   │   └── logo.svg
-│   │   └── logo.png
-│   └── favicon.svg
-│   └── astropaper-og.jpg
-│   └── robots.txt
-│   └── toggle-theme.js
-├── src/
-│   ├── assets/
-│   │   └── socialIcons.ts
-│   ├── components/
-│   ├── content/
-│   │   |  blog/
-│   │   |    └── some-blog-posts.md
-│   │   └── config.ts
-│   ├── layouts/
-│   └── pages/
-│   └── styles/
-│   └── utils/
-│   └── config.ts
-│   └── types.ts
-└── package.json
-```
+The `run_integration_test.py` script performs the following steps:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1.  **Checks Prerequisites:** Verifies the existence of `credentials.json` and the `GEMINI_API_KEY` environment variable.
+2.  **Fetches Drive Activity:** Calls `fetch_drive_activity.main()` to:
+    *   Authenticate with the Google Drive API (creating/updating `token.json`).
+    *   Fetch metadata for the 20 most recently modified files in your Google Drive.
+    *   Save this metadata to `google_drive_activity.json`.
+3.  **Selects Data:** Reads `google_drive_activity.json` and selects the first file listed.
+4.  **Extracts Text Content:**
+    *   If the selected file is a Google Document (`application/vnd.google-apps.document`), it attempts to download its content as plain text using `fetch_drive_activity.get_google_doc_content_as_text()`.
+    *   If it's another type of file or if content extraction fails, it uses the file's metadata (name, type, etc.) as the input text.
+5.  **Processes with LLM:**
+    *   Prints a sample of the text being sent to the LLM.
+    *   Calls `llm_interaction.process_text_with_llm()` with the extracted text and your `GEMINI_API_KEY`.
+    *   The LLM is prompted to identify blog-worthy information, rewrite it in an engaging tone, and remove all PII.
+6.  **Displays and Saves Output:**
+    *   Prints the processed text received from the LLM to the console.
+    *   Saves the full LLM output to a file named `llm_processed_sample_output.txt`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Expected Output
 
-All blog posts are stored in `src/content/blog` directory.
+*   **Console Output:**
+    *   Status messages from the script execution (prerequisite checks, Drive activity fetching, LLM processing steps).
+    *   A sample of the text sent to the LLM.
+    *   The full processed text returned by the LLM.
+*   **Files Created/Updated:**
+    *   `token.json`: Stores your Google Drive API OAuth tokens.
+    *   `google_drive_activity.json`: Contains metadata of your recent Google Drive files.
+    *   `llm_processed_sample_output.txt`: Contains the output from the LLM after processing the selected file's content/metadata.
 
-## 📖 Documentation
+## **IMPORTANT: Review and Feedback**
 
-Documentation can be read in two formats\_ _markdown_ & _blog post_.
+After the script completes, please **open and carefully review `llm_processed_sample_output.txt`**.
 
-- Configuration - [markdown](src/content/blog/how-to-configure-astropaper-theme.md) | [blog post](https://astro-paper.pages.dev/posts/how-to-configure-astropaper-theme/)
-- Add Posts - [markdown](src/content/blog/adding-new-post.md) | [blog post](https://astro-paper.pages.dev/posts/adding-new-posts-in-astropaper-theme/)
-- Customize Color Schemes - [markdown](src/content/blog/customizing-astropaper-theme-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)
-- Predefined Color Schemes - [markdown](src/content/blog/predefined-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/predefined-color-schemes/)
+Your feedback on the following aspects is crucial for the next steps of this project:
+*   **Relevance:** Is the content generated by the LLM relevant to the input text?
+*   **PII Removal:** Has all Personal Identifiable Information (PII) been successfully removed? Check carefully for any missed names, emails, locations, etc.
+*   **Tone and Style:** Is the tone engaging and suitable for a blog post?
+*   **Overall Quality:** What is your general impression of the output? Are there any specific areas for improvement?
 
-> For AstroPaper v1, check out [this branch](https://github.com/satnaing/astro-paper/tree/astro-paper-v1) and this [live URL](https://astro-paper-v1.astro-paper.pages.dev/)
-
-## 💻 Tech Stack
-
-**Main Framework** - [Astro](https://astro.build/)  
-**Type Checking** - [TypeScript](https://www.typescriptlang.org/)  
-**Component Framework** - [ReactJS](https://reactjs.org/)  
-**Styling** - [TailwindCSS](https://tailwindcss.com/)  
-**UI/UX** - [Figma](https://figma.com)  
-**Fuzzy Search** - [FuseJS](https://fusejs.io/)  
-**Icons** - [Boxicons](https://boxicons.com/) | [Tablers](https://tabler-icons.io/)  
-**Code Formatting** - [Prettier](https://prettier.io/)  
-**Deployment** - [Cloudflare Pages](https://pages.cloudflare.com/)  
-**Illustration in About Page** - [https://freesvgillustration.com](https://freesvgillustration.com/)  
-**Linting** - [ESLint](https://eslint.org)
-
-## 👨🏻‍💻 Running Locally
-
-The easiest way to run this project locally is to run the following command in your desired directory.
-
-```bash
-# npm 6.x
-npm create astro@latest --template satnaing/astro-paper
-
-# npm 7+, extra double-dash is needed:
-npm create astro@latest -- --template satnaing/astro-paper
-
-# yarn
-yarn create astro --template satnaing/astro-paper
-```
-
-## Google Site Verification (optional)
-
-You can easily add your [Google Site Verification HTML tag](https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag) in AstroPaper using environment variable. This step is optional. If you don't add the following env variable, the google-site-verification tag won't appear in the html `<head>` section.
-
-```bash
-# in your environment variable file (.env)
-PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
-```
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-> **_Note!_** For `Docker` commands we must have it [installed](https://docs.docker.com/engine/install/) in your machine.
-
-| Command                              | Action                                                                                                                           |
-| :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| `npm install`                        | Installs dependencies                                                                                                            |
-| `npm run dev`                        | Starts local dev server at `localhost:4321`                                                                                      |
-| `npm run build`                      | Build your production site to `./dist/`                                                                                          |
-| `npm run preview`                    | Preview your build locally, before deploying                                                                                     |
-| `npm run format:check`               | Check code format with Prettier                                                                                                  |
-| `npm run format`                     | Format codes with Prettier                                                                                                       |
-| `npm run sync`                       | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
-| `npm run cz`                         | Commit code changes with commitizen                                                                                              |
-| `npm run lint`                       | Lint with ESLint                                                                                                                 |
-| `docker compose up -d`               | Run AstroPaper on docker, You can access with the same hostname and port informed on `dev` command.                              |
-| `docker compose run app npm install` | You can run any command above into the docker container.                                                                         |
-
-> **_Warning!_** Windows PowerShell users may need to install the [concurrently package](https://www.npmjs.com/package/concurrently) if they want to [run diagnostics](https://docs.astro.build/en/reference/cli-reference/#astro-check) during development (`astro check --watch & astro dev`). For more info, see [this issue](https://github.com/satnaing/astro-paper/issues/113).
-
-## ✨ Feedback & Suggestions
-
-If you have any suggestions/feedback, you can contact me via [my email](mailto:contact@satnaing.dev). Alternatively, feel free to open an issue if you find bugs or want to request new features.
-
-## 📜 License
-
-Licensed under the MIT License, Copyright © 2023
-
----
-
-Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+This feedback will be used to refine the PII detection, prompt engineering, and content generation capabilities of the system.
