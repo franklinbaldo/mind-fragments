@@ -40,7 +40,7 @@ theme:
 
 nav:
   - Home: index.md
-  - About: about.md
+  - About: blog/posts/2025-02-02-inaugural-post-a-glimpse-inside-my-mind.md
   - Blog:
     - blog/index.md
     # Individual blog posts will be added here or managed by a plugin

@@ -1,9 +1,13 @@
-
-# **Documento Conceitual: A Crônica de Franklin Baldo**
+---
+author: "Franklin Baldo"
+date: "2024-07-12"
+title: "Documento Conceitual: A Crônica de Franklin Baldo"
+featured: false
+draft: false
+---
 ## _Um Blueprint para um Jornal Autobiográfico Potencializado por IA_
 
 **Versão:** 1.0
-**Autor:** (Sistema de IA, a pedido de Franklin Baldo)
 **Data:** 26 de Maio de 2024
 
 ### **Resumo Executivo**
