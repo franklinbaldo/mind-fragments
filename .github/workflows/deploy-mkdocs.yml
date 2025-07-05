@@ -1,0 +1,63 @@
+name: Deploy MkDocs Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+  pull_request:
+    branches:
+      - main # Or your default branch
+
+permissions:
+  contents: read # To checkout the repository
+  pages: write # To deploy to GitHub Pages
+  id-token: write # To authenticate with GitHub Pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # Use a recent Python 3 version
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Optional: Install Node.js and dependencies if needed for linting/formatting pre-checks
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20' # Or your preferred Node.js version
+      # - name: Install Node.js dependencies
+      #   run: npm ci # Use ci for faster, more reliable builds in CI
+
+      # Optional: Linting/Formatting Checks
+      # - name: Run linters and formatters
+      #   run: |
+      #     npm run lint # Example, if you have linting scripts
+      #     npm run format:check # Example, if you have formatting check scripts
+
+      - name: Build MkDocs site
+        run: mkdocs build --verbose # Use --strict if you want warnings to fail the build
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./site # Default MkDocs output directory
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        # This action will automatically use the artifact uploaded in the previous step
+        # Ensure your repository settings are configured for GitHub Pages deployment
+        # from GitHub Actions. (Settings > Pages > Build and deployment > Source: GitHub Actions)

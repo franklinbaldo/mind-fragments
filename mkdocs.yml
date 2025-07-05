@@ -1,5 +1,107 @@
-site_name: My Material Docs
+site_name: "The Chronicle of Franklin Baldo"
+site_url: "https://franklinbaldo.github.io/mind-fragments"
+site_author: "Franklin Baldo"
+site_description: "A digital chronicle of Franklin Baldo's thoughts, projects, and intellectual journey. An experiment in autobiographical AI."
+
 theme:
   name: material
+  language: "en"
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: material/feather # Placeholder, can be replaced with a custom logo
+  social:
+    - icon: fontawesome/brands/github
+      link: "https://github.com/franklinbaldo"
+    - icon: fontawesome/brands/twitter
+      link: "https://twitter.com/franklinbaldo" # Placeholder, Franklin to update if different
+    - icon: fontawesome/solid/envelope
+      link: "mailto:franklin@franklinbaldo.com" # Placeholder, Franklin to update
+
 nav:
   - Home: index.md
+  - About: about.md
+  - Blog:
+    - blog/index.md
+    # Individual blog posts will be added here or managed by a plugin
+
+plugins:
+  - search
+  - social # For social media cards
+  - tags # For blog post tags
+  - rss: # For RSS feed generation
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: "date"
+      categories:
+        - tags
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/franklinbaldo
+      name: Franklin Baldo on Github
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/franklinbaldo # Placeholder
+      name: Franklin Baldo on Twitter
+    - icon: fontawesome/solid/envelope
+      link: mailto:franklin@franklinbaldo.com # Placeholder
+      name: Send an email to Franklin Baldo
+  analytics:
+    provider: google # Or other analytics provider
+    property: UA-XXXXXXXXX-X # Replace with actual Google Analytics ID
+
+copyright: "Copyright &copy; 2024 Franklin Baldo"
+
+# For the material theme's blog functionality (if not using a separate plugin like mkdocs-rss-plugin for listing)
+# We might need to adjust this depending on how we structure the blog content files.
+# The `material/blog` feature is part of the Insiders version.
+# For the community version, we'll rely on structuring content and possibly plugins like `mkdocs-awesome-pages-plugin` or `mkdocs-rss-plugin` for discovery.
+# The `rss` plugin above will generate the feed. Listing posts might require manual nav entries or another plugin.
+
+# Ensure `docs/blog/index.md` exists for the Blog section link.
+# Ensure `docs/about.md` exists for the About page link.
+# Blog posts will reside in `docs/blog/posts/` (example path, can be adjusted)
+# Example: `docs/blog/posts/my-first-post.md`
+# The `nav` section for blog posts might need to be dynamic if using a plugin, or posts can be listed on `blog/index.md`.
+# The `rss` plugin configuration is set up to look for posts in `blog/posts/`.
+# The `tags` plugin will automatically create tag indexes.
+# The `social` plugin is for social cards when sharing links, not for site social links (handled by theme.social).
+
+# We will need to install the required plugins:
+# pip install mkdocs-material mkdocs-social-plugin mkdocs-tags-plugin mkdocs-rss-plugin pymdown-extensions
+# (This will be done in a later step, likely during build/deployment setup)
