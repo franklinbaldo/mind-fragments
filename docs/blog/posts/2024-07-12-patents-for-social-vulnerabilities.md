@@ -1,6 +1,10 @@
-The user wants me to provide the complete article with all the sections together in one response, including the addition about the ethical use defense. I'll need to compile the full piece including all sections I-XIII that we've been developing.
-
-# Patents For Social Vulnerabilities: A Modest Proposal For Turning Criminals Into Consultants
+---
+author: "Scott Alexander"
+date: "2024-07-12"
+title: "Patents For Social Vulnerabilities: A Modest Proposal For Turning Criminals Into Consultants"
+featured: false
+draft: false
+---
 
 ## I.
 
