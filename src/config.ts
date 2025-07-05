@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Franklin Baldo",
   desc: "A digital chronicle of Franklin Baldo's thoughts, projects, and intellectual journey. An experiment in autobiographical AI.",
   title: "The Chronicle of Franklin Baldo",
-  ogImage: "astropaper-og.jpg", // Consider creating a custom one for Franklin
+  ogImage: "default-og.jpg", // Consider creating a custom one for Franklin
   lightAndDarkMode: true,
   postPerPage: 10, // Adjusted for potentially more frequent, shorter posts
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
