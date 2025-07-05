@@ -1,11 +1,9 @@
-# Welcome to My Material Docs!
+---
+title: Home
+---
 
-This is a placeholder page. You can replace this content with your own.
+Welcome to The Chronicle of Franklin Baldo.
 
-## Getting Started
+This is a digital chronicle of Franklin Baldo's thoughts, projects, and intellectual journey. An experiment in autobiographical AI.
 
-- Edit `mkdocs.yml` to customize your site.
-- Add new Markdown files to the `docs` directory.
-- Update the `nav` section in `mkdocs.yml` to reflect your site structure.
-
-For more information, check out the [MkDocs documentation](https://www.mkdocs.org/) and the [Material for MkDocs documentation](https://squidfunk.github.io/mkdocs-material/).
+Navigate to the [Blog](/mind-fragments/blog/) to read the latest posts or check out the [About](/mind-fragments/about/) page to learn more.
