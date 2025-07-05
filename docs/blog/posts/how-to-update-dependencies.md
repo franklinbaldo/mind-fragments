@@ -1,5 +1,5 @@
 ---
-title: How to update dependencies of AstroPaper
+title: How to update dependencies of Mind Fragments
 # Other Astro-specific fields like ogImage, canonicalURL, featured, modDatetime might not be directly used by the default MkDocs Material theme or configured plugins.
 author: Sat Naing
 date: 2023-07-20T15:33:05.569Z
@@ -10,10 +10,10 @@ draft: false
 ogImage: /assets/forrest-gump-quote.webp
 tags:
   - FAQ
-description: How to update project dependencies and AstroPaper template.
+description: How to update project dependencies and the Mind Fragments template.
 ---
 
-Updating the dependencies of a project can be tedious. However, neglecting to update project dependencies is not a good idea either 😬. In this post, I will share how I usually update my projects, focusing on AstroPaper as an example. Nonetheless, these steps can be applied to other js/node projects as well.
+Updating the dependencies of a project can be tedious. However, neglecting to update project dependencies is not a good idea either 😬. In this post, I will share how I usually update my projects, focusing on Mind Fragments as an example. Nonetheless, these steps can be applied to other js/node projects as well.
 
 ![Forrest Gump Fake Quote](/assets/forrest-gump-quote.webp)
 
@@ -55,9 +55,9 @@ If there are any major updates (or some updates you still have to make), the abo
 
 If you run `ncu -i` and found no more packages to be updated, _**Congrats!!!**_ you have successfully updated all the dependencies in your project.
 
-## Updating AstroPaper template
+## Updating Mind Fragments template
 
-Like other open-source projects, AstroPaper is evolving with bug fixes, feature updates, and so on. So if you’re someone who is using AstroPaper as a template, you might also want to update the template when there’s a new release.
+Like other open-source projects, the Mind Fragments template is evolving with bug fixes, feature updates, and so on. So if you’re someone who is using Mind Fragments as a template, you might also want to update the template when there’s a new release.
 
 The thing is, you might already have updated the template according to your flavor. Therefore, I can’t exactly show **"the one-size-fits-all perfect way"** to update the template to the most recent release. However, here are some tips to update the template without breaking your repo. Keep in mind that, most of the time, updating the package dependencies might be sufficient for you.
 
@@ -65,11 +65,11 @@ The thing is, you might already have updated the template according to your flav
 
 In most cases, the files and directories you might not want to override (as you've likely updated those files) are `src/content/blog/`, `src/config.ts`, `src/pages/about.md`, and other assets & styles like `public/` and `src/styles/base.css`.
 
-If you’re someone who only updates the bare minimum of the template, it should be okay to replace everything with the latest AstroPaper except the above files and directories. It’s like pure Android OS and other vendor-specific OSes like OneUI. The less you modify the base, the less you have to update.
+If you’re someone who only updates the bare minimum of the template, it should be okay to replace everything with the latest Mind Fragments except the above files and directories. It’s like pure Android OS and other vendor-specific OSes like OneUI. The less you modify the base, the less you have to update.
 
 You can manually replace every file one by one, or you can use the magic of git to update everything. I won’t show you the manual replacement process since it is very straightforward. If you’re not interested in that straightfoward and inefficient method, bear with me 🐻.
 
-### Updating AstroPaper using Git
+### Updating Mind Fragments using Git
 
 **IMPORTANT!!!**
 
@@ -107,9 +107,9 @@ Once you're satisfied with the result, it's time to merge the update branch into
 
 ## Conclusion
 
-In this article, I've shared some of my insights and processes for updating dependencies and the AstroPaper template. I genuinely hope this article proves valuable and assists you in managing your projects more efficiently.
+In this article, I've shared some of my insights and processes for updating dependencies and the Mind Fragments template. I genuinely hope this article proves valuable and assists you in managing your projects more efficiently.
 
-If you have any alternative or improved approaches for updating dependencies/AstroPaper, I would love to hear from you. Thus, don't hesitate to start a discussion in the repository, email me, or open an issue. Your input and ideas are highly appreciated!
+If you have any alternative or improved approaches for updating dependencies/Mind Fragments, I would love to hear from you. Thus, don't hesitate to start a discussion in the repository, email me, or open an issue. Your input and ideas are highly appreciated!
 
 Please understand that my schedule is quite busy these days, and I may not be able to respond quickly. However, I promise to get back to you as soon as possible. 😬
 

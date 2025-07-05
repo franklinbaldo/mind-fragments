@@ -97,7 +97,7 @@ Cada etapa do pipeline é executada por um agente especializado, que é essencia
 *   **LLM:** **Google Gemini API (inicialmente)**. Escolhido pela alta capacidade (janela de contexto gigante do 1.5 Pro é ideal para o FactCheckBot), baixa latência e infraestrutura gerenciada.
 *   **Orquestração:** **GitHub Actions**. Gratuito para projetos públicos, nativo do ecossistema de desenvolvimento e perfeito para o modelo de pipeline baseado em Git.
 *   **Armazenamento de Dados:** **DuckDB**. Um banco de dados em arquivo, perfeito para ser usado dentro do workflow do GitHub Actions. Armazenará os IDs dos leads já processados para evitar duplicidade.
-*   **Frontend:** **Astro (AstroPaper)**. Já existente no repositório, conhecido por sua performance e excelente experiência de desenvolvimento para sites de conteúdo.
+*   **Frontend:** **Astro (Mind Fragments)**. Já existente no repositório, conhecido por sua performance e excelente experiência de desenvolvimento para sites de conteúdo.
 
 ---
 

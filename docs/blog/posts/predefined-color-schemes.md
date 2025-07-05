@@ -11,11 +11,11 @@ draft: false
 tags:
   - color-schemes
 description:
-  Some of the well-crafted, predefined color schemes for AstroPaper blog
+  Some of the well-crafted, predefined color schemes for Mind Fragments blog
   theme.
 ---
 
-I've crafted some predefined color schemes for this AstroPaper blog theme. You can replace these color schemes with the original ones.
+I've crafted some predefined color schemes for this Mind Fragments blog theme. You can replace these color schemes with the original ones.
 
 If you don't know how you can configure color schemes, check [this blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/).
 
@@ -77,9 +77,9 @@ html[data-theme="light"] {
 
 Dark color scheme has to be defined as `html[data-theme="dark"]`.
 
-### AstroPaper 1 original Dark Theme
+### Mind Fragments (Original AstroPaper 1) Dark Theme
 
-![AstroPaper 1 default dark theme](https://user-images.githubusercontent.com/53733092/215769153-13b0ad8d-5ba2-44b1-af06-e5ae61293f62.png)
+![Mind Fragments (Original AstroPaper 1) default dark theme](https://user-images.githubusercontent.com/53733092/215769153-13b0ad8d-5ba2-44b1-af06-e5ae61293f62.png)
 
 ```css
 html[data-theme="dark"] {
@@ -138,7 +138,7 @@ html[data-theme="dark"] {
 }
 ```
 
-### Astro dark (New default dark theme in AstroPaper 2)
+### Astro dark (New default dark theme in Mind Fragments, from AstroPaper 2)
 
 ![new dark color scheme - low contrast](https://user-images.githubusercontent.com/53733092/215772856-d5b7ae35-ddaa-4ed6-b0bf-3fa5dbcf834c.png)
 
@@ -153,9 +153,9 @@ html[data-theme="dark"] {
 }
 ```
 
-### Astro Deep Purple (New dark theme in AstroPaper 3)
+### Astro Deep Purple (New dark theme in Mind Fragments, from AstroPaper 3)
 
-![AstroPaper v3 new theme](https://github.com/satnaing/astro-paper/assets/53733092/c8b5d7e1-a3bc-4852-a5ad-4abf7b3cec79)
+![Mind Fragments (AstroPaper v3) new theme](https://github.com/satnaing/astro-paper/assets/53733092/c8b5d7e1-a3bc-4852-a5ad-4abf7b3cec79)
 
 ```css
 html[data-theme="dark"] {
@@ -168,9 +168,9 @@ html[data-theme="dark"] {
 }
 ```
 
-### AstroPaper v4 Special (New dark theme in AstroPaper 4)
+### Mind Fragments (AstroPaper v4) Special
 
-![AstroPaper v4 new theme](https://github.com/satnaing/astro-paper/assets/53733092/66eb74dc-7a0e-4f2e-982d-25f5c443b25a)
+![Mind Fragments (AstroPaper v4) new theme](https://github.com/satnaing/astro-paper/assets/53733092/66eb74dc-7a0e-4f2e-982d-25f5c443b25a)
 
 ```css
 html[data-theme="dark"] {
