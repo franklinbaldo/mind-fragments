@@ -3,13 +3,13 @@ author: Simon Smale
 # Other Astro-specific fields like ogImage, canonicalURL, featured, modDatetime might not be directly used by the default MkDocs Material theme or configured plugins.
 date: 2024-01-08T18:16:00.000Z
 modDatetime:
-title: How to add a new Social Icon to AstroPaper
+title: How to add a new Social Icon to Mind Fragments
 featured: false
 draft: false
 # Note: MkDocs Material theme might not natively support 'draft' status without customization or plugins like mkdocs-exclude. Content will be included by default.
 tags:
   - FAQ
-description: How to add a new social icon to AstroPaper
+description: How to add a new social icon to Mind Fragments
 ---
 
 Hot new platform? Niche corner of the internet? Or one specific to your area? This post will guide you through how to add a new social icon to the theme.
