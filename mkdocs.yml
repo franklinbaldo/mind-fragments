@@ -40,21 +40,33 @@ theme:
 
 nav:
   - Home: index.md
-  - About: blog/posts/2025-02-02-inaugural-post-a-glimpse-inside-my-mind.md
+  - About: about.md
   - Blog:
     - blog/index.md
-    # Individual blog posts will be added here or managed by a plugin
+    - "Inaugural Post": blog/posts/2025-02-02-inaugural-post-a-glimpse-inside-my-mind.md
+    - "Documento Conceitual": blog/posts/2024-07-12-documento-conceitual-a-cronica-de-franklin-baldo.md
+    - "Patents For Social Vulnerabilities": blog/posts/2024-07-12-patents-for-social-vulnerabilities.md
+    - "Pontifex Architecture Implementation Guide": blog/posts/2024-07-12-pontifex-architecture-implementation-guide.md
+    - "Pontifex: A Novel Architecture for Semantic Probing": blog/posts/2024-07-12-pontifex-novel-architecture-semantic-probing.md
+    - "Will AI Discover a New Conservation Law Before 2050?": blog/posts/2024-07-12-will-ai-discover-new-conservation-law-before-2050.md
+    - "Adding new posts in Mind Fragments theme": blog/posts/adding-new-post.md
+    - "Dynamic OG image generation in Mind Fragments blog posts": blog/posts/dynamic-og-images.md
+    - "How to add a new Social Icon to Mind Fragments": blog/posts/how-to-add-a-new-social-icon.md
+    - "How to update dependencies of Mind Fragments": blog/posts/how-to-update-dependencies.md
+    - "How Do I Develop My Portfolio Website & Blog": blog/posts/portfolio-website-development.md
+    - "Predefined color schemes": blog/posts/predefined-color-schemes.md
+    - "Tailwind Typography Plugin": blog/posts/tailwind-typography.md
+    - "How Do I Develop My Terminal Portfolio Website with React": blog/posts/terminal-development.md
 
 plugins:
   - search
-  - social # For social media cards
-  - tags # For blog post tags
+  
+  
   - rss: # For RSS feed generation
       match_path: blog/posts/.*
       date_from_meta:
         as_creation: "date"
-      categories:
-        - tags
+        datetime_format: "%Y-%m-%d"
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -87,21 +99,4 @@ extra:
 
 copyright: "Copyright &copy; 2024 Franklin Baldo"
 
-# For the material theme's blog functionality (if not using a separate plugin like mkdocs-rss-plugin for listing)
-# We might need to adjust this depending on how we structure the blog content files.
-# The `material/blog` feature is part of the Insiders version.
-# For the community version, we'll rely on structuring content and possibly plugins like `mkdocs-awesome-pages-plugin` or `mkdocs-rss-plugin` for discovery.
-# The `rss` plugin above will generate the feed. Listing posts might require manual nav entries or another plugin.
 
-# Ensure `docs/blog/index.md` exists for the Blog section link.
-# Ensure `docs/about.md` exists for the About page link.
-# Blog posts will reside in `docs/blog/posts/` (example path, can be adjusted)
-# Example: `docs/blog/posts/my-first-post.md`
-# The `nav` section for blog posts might need to be dynamic if using a plugin, or posts can be listed on `blog/index.md`.
-# The `rss` plugin configuration is set up to look for posts in `blog/posts/`.
-# The `tags` plugin will automatically create tag indexes.
-# The `social` plugin is for social cards when sharing links, not for site social links (handled by theme.social).
-
-# We will need to install the required plugins:
-# pip install mkdocs-material mkdocs-social-plugin mkdocs-tags-plugin mkdocs-rss-plugin pymdown-extensions
-# (This will be done in a later step, likely during build/deployment setup)

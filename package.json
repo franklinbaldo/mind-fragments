@@ -5,33 +5,11 @@
   "scripts": {
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "cz": "cz",
-    "prepare": "husky install",
-    "lint": "eslint .",
     "docs:dev": "mkdocs serve",
     "docs:build": "mkdocs build",
     "docs:deploy": "mkdocs gh-deploy"
   },
-  "dependencies": {
-    "typescript": "^5.3.3"
-  },
   "devDependencies": {
-    "@typescript-eslint/parser": "^6.19.0",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.56.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.5.2",
     "prettier": "^3.2.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,json}": [
-      "prettier --write"
-    ]
   }
 }

@@ -2,12 +2,10 @@
 /*
 
 # Except these files & folders
-!/src
-!/public
 !/.github
-!tsconfig.json
-!astro.config.ts
 !package.json
 !.prettierrc
 !.eslintrc.js
 !README.md
+!mkdocs.yml
+!docs

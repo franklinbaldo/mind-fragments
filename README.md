@@ -13,28 +13,18 @@ This theme is self-documented \_ which means articles/posts in this theme can al
 
 ## 🔥 Features
 
-- [x] type-safe markdown
-- [x] super fast performance
-- [x] accessible (Keyboard/VoiceOver)
-- [x] responsive (mobile ~ desktops)
+- [x] Markdown-based content
+- [x] Responsive design (mobile ~ desktops)
 - [x] SEO-friendly
-- [x] light & dark mode
-- [x] fuzzy search
-- [x] draft posts & pagination
-- [x] sitemap & rss feed
-- [x] followed best practices
-- [x] highly customizable
-- [x] dynamic OG image generation for blog posts [#15](https://github.com/satnaing/astro-paper/pull/15) ([Blog Post](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/))
-
-_Note: I've tested screen-reader accessibility of Mind Fragments using **VoiceOver** on Mac and **TalkBack** on Android. I couldn't test all other screen-readers out there. However, accessibility enhancements in Mind Fragments should be working fine on others as well._
+- [x] Light & dark mode (via MkDocs Material theme)
+- [x] Categories
+- [x] RSS feed generation
+- [x] Search functionality
+- [x] Highly customizable (via MkDocs configuration)
 
 ## ✅ Lighthouse Score
 
-<p align="center">
-  <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fastro-paper.pages.dev%2F&form_factor=desktop">
-    <!-- Removed broken image link to AstroPaper-lighthouse-score.svg -->
-  <a>
-</p>
+(Lighthouse score will depend on your deployment and content, but MkDocs Material is generally performant.)
 
 ## 🚀 Project Structure
 
@@ -121,30 +111,19 @@ Key documentation files include:
 
 ## 👨🏻‍💻 Running Locally
 
-The easiest way to run this project locally is to use the `create-astro` CLI. Open your terminal, `cd` into your desired directory, and run one of the following commands:
+To run this project locally, you'll need Python and `pip` installed. Then, install the required Python packages:
 
 ```bash
-# npm 6.x
-npm create astro@latest --template satnaing/astro-paper
-
-# npm 7+, extra double-dash is needed:
-npm create astro@latest -- --template satnaing/astro-paper
-
-# yarn
-yarn create astro --template satnaing/astro-paper
-
-# pnpm
-pnpm create astro --template satnaing/astro-paper
+pip install -r requirements.txt
 ```
 
-Alternatively, you can clone the repository and install dependencies manually:
+Once dependencies are installed, you can serve the site:
 
 ```bash
-git clone https://github.com/satnaing/astro-paper.git
-cd astro-paper
-npm install # or yarn install or pnpm install
-npm run dev
+mkdocs serve
 ```
+
+The application will be accessible at `http://localhost:8000`.
 
 ### Running with Docker
 
@@ -157,19 +136,6 @@ docker compose up -d --build
 # To stop the container
 docker compose down
 ```
-The application will be accessible at `http://localhost:4321`.
-
-## Google Site Verification (Optional)
-
-If you wish to verify your site with Google, you can add your [Google Site Verification HTML tag](https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag) to Mind Fragments using an environment variable. This step is entirely optional. If you do not add the following environment variable, the `google-site-verification` tag will not be included in the HTML `<head>` section.
-
-Create a `.env` file in the root of your project (if it doesn't already exist) and add the following line:
-
-```bash
-# .env
-PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
-```
-Replace `your-google-site-verification-value` with the actual content attribute from your Google meta tag.
 
 ## 🧞 Commands
 
@@ -179,23 +145,14 @@ All commands are run from the root of the project in a terminal:
 
 | Command                              | Action                                                                                                                               |
 | :----------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| `npm install`                        | Installs project dependencies.                                                                                                       |
-| `npm run dev`                        | Starts the local development server at `http://localhost:4321`.                                                                      |
-| `npm run build`                      | Builds your production site into the `./dist/` directory.                                                                            |
-| `npm run preview`                    | Starts a local server to preview your production build from `./dist/`.                                                               |
-| `npm run format:check`               | Checks code formatting with Prettier without making changes.                                                                         |
-| `npm run format`                     | Formats all code with Prettier.                                                                                                      |
-| `npm run lint`                       | Lints code with ESLint to find and fix problems.                                                                                     |
-| `npm run lint:fix`                   | Lints code with ESLint and automatically fixes fixable issues.                                                                       |
-| `npm run cz`                         | Starts the Commitizen CLI for creating conventional commit messages.                                                                 |
-| `npm run sync`                       | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync).     |
-| `npm run new-post <title>`           | Creates a new blog post markdown file with the given title in `src/content/blog/`. (e.g., `npm run new-post "My Awesome Post"`)    |
-| `docker compose up -d --build`       | Builds and starts the Docker containers in detached mode. The application will be available at `http://localhost:4321`.             |
+| `pip install -r requirements.txt`    | Installs project dependencies.                                                                                                       |
+| `mkdocs serve`                       | Starts the local development server at `http://localhost:8000`.                                                                      |
+| `mkdocs build`                       | Builds your production site into the `./site/` directory.                                                                            |
+| `mkdocs gh-deploy`                   | Deploys your site to GitHub Pages.                                                                                                   |
+| `docker compose up -d --build`       | Builds and starts the Docker containers in detached mode.                                                                            |
 | `docker compose down`                | Stops and removes the Docker containers defined in `docker-compose.yml`.                                                             |
 | `docker compose logs -f`             | Follows the logs of the running Docker containers.                                                                                   |
-| `docker compose exec app <command>`  | Executes a command inside the running `app` service container (e.g., `docker compose exec app npm install`).                       |
-
-> **_Warning!_** Windows PowerShell users may need to install the [concurrently package](https://www.npmjs.com/package/concurrently) globally (`npm install -g concurrently`) if they encounter issues [running diagnostics](https://docs.astro.build/en/reference/cli-reference/#astro-check) during development (e.g., `astro check --watch & astro dev`). For more information, see [this issue](https://github.com/satnaing/astro-paper/issues/113).
+| `docker compose exec app <command>`  | Executes a command inside the running `app` service container (e.g., `docker compose exec app pip install`).                       |
 
 ## ✨ Feedback & Suggestions
 
