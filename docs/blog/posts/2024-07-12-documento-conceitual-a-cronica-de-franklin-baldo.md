@@ -1,9 +1,7 @@
 ---
-author: "Franklin Baldo"
-date: "2024-07-12"
+author: franklin
+date: 2024-07-12
 title: "Documento Conceitual: A Crônica de Franklin Baldo"
-featured: false
-draft: false
 ---
 ## _Um Blueprint para um Jornal Autobiográfico Potencializado por IA_
 

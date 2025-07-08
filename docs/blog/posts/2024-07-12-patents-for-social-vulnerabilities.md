@@ -1,9 +1,7 @@
 ---
-author: "Scott Alexander"
-date: "2024-07-12"
-title: "Patents For Social Vulnerabilities: A Modest Proposal For Turning Criminals Into Consultants"
-featured: false
-draft: false
+author: scottalexander
+date: 2024-07-12
+title: Patents For Social Vulnerabilities: A Modest Proposal For Turning Criminals Into Consultants
 ---
 
 ## I.

@@ -9,6 +9,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes # Enable index pages for sections
     - toc.integrate
     - navigation.top
     - search.suggest
@@ -16,6 +17,8 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    - content.action.edit # Enable edit button
+    - content.action.view # Enable view button
   palette:
     - scheme: default
       toggle:
@@ -34,39 +37,29 @@ theme:
     - icon: fontawesome/brands/github
       link: "https://github.com/franklinbaldo"
     - icon: fontawesome/brands/twitter
-      link: "https://twitter.com/franklinbaldo" # Placeholder, Franklin to update if different
+      link: "https://twitter.com/franklinbaldo"
     - icon: fontawesome/solid/envelope
-      link: "mailto:franklin@franklinbaldo.com" # Placeholder, Franklin to update
+      link: "mailto:franklin@franklinbaldo.com"
 
 nav:
   - Home: index.md
   - About: about.md
-  - Blog:
-    - blog/index.md
-    - "Inaugural Post": blog/posts/2025-02-02-inaugural-post-a-glimpse-inside-my-mind.md
-    - "Documento Conceitual": blog/posts/2024-07-12-documento-conceitual-a-cronica-de-franklin-baldo.md
-    - "Patents For Social Vulnerabilities": blog/posts/2024-07-12-patents-for-social-vulnerabilities.md
-    - "Pontifex Architecture Implementation Guide": blog/posts/2024-07-12-pontifex-architecture-implementation-guide.md
-    - "Pontifex: A Novel Architecture for Semantic Probing": blog/posts/2024-07-12-pontifex-novel-architecture-semantic-probing.md
-    - "Will AI Discover a New Conservation Law Before 2050?": blog/posts/2024-07-12-will-ai-discover-new-conservation-law-before-2050.md
-    - "Adding new posts in Mind Fragments theme": blog/posts/adding-new-post.md
-    - "Dynamic OG image generation in Mind Fragments blog posts": blog/posts/dynamic-og-images.md
-    - "How to add a new Social Icon to Mind Fragments": blog/posts/how-to-add-a-new-social-icon.md
-    - "How to update dependencies of Mind Fragments": blog/posts/how-to-update-dependencies.md
-    - "How Do I Develop My Portfolio Website & Blog": blog/posts/portfolio-website-development.md
-    - "Predefined color schemes": blog/posts/predefined-color-schemes.md
-    - "Tailwind Typography Plugin": blog/posts/tailwind-typography.md
-    - "How Do I Develop My Terminal Portfolio Website with React": blog/posts/terminal-development.md
+  - Blog: blog/ # This will be handled by the blog plugin
 
 plugins:
   - search
-  
-  
-  - rss: # For RSS feed generation
-      match_path: blog/posts/.*
-      date_from_meta:
-        as_creation: "date"
-        datetime_format: "%Y-%m-%d"
+  - blog:
+      # The blog plugin will automatically discover posts in the 'blog' directory
+      # and generate the index and post pages.
+      # You can configure categories, tags, authors here.
+      # For example:
+      post_url_format: "{slug}" # Use clean URLs for posts
+      post_dir: blog/posts # Directory where blog posts are located
+      
+  - social:
+      
+      enabled: true # Enable social cards
+  - git-revision-date-localized # For displaying last updated date
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -81,6 +74,12 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+  - def_list # For definition lists
+  - pymdownx.tasklist: # For task lists
+      custom_checkbox: true
+  - pymdownx.emoji: # For emojis
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra:
   social:
@@ -88,15 +87,13 @@ extra:
       link: https://github.com/franklinbaldo
       name: Franklin Baldo on Github
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/franklinbaldo # Placeholder
+      link: https://twitter.com/franklinbaldo
       name: Franklin Baldo on Twitter
     - icon: fontawesome/solid/envelope
-      link: mailto:franklin@franklinbaldo.com # Placeholder
+      link: mailto:franklin@franklinbaldo.com
       name: Send an email to Franklin Baldo
   analytics:
-    provider: google # Or other analytics provider
+    provider: google
     property: UA-XXXXXXXXX-X # Replace with actual Google Analytics ID
 
 copyright: "Copyright &copy; 2024 Franklin Baldo"
-
-

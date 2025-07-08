@@ -1,9 +1,7 @@
 ---
-author: "Franklin"
-date: "2024-07-12"
-title: "Will AI Discover a New Conservation Law Before 2050?"
-featured: false
-draft: false
+author: franklin
+date: 2024-07-12
+title: Will AI Discover a New Conservation Law Before 2050?
 ---
 
 ## A quantum speculation about machines that reveal hidden symmetries of the universe, tested through betting in prediction markets.

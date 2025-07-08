@@ -1,11 +1,7 @@
 ---
-author: Franklin
-# Other Astro-specific fields like ogImage, canonicalURL, featured, modDatetime might not be directly used by the default MkDocs Material theme or configured plugins.
+author: franklin
 date: 2025-02-02
-title: "Inaugural Post: A Glimpse Inside My Mind"
-featured: false
-draft: false
-# Note: MkDocs Material theme might not natively support 'draft' status without customization or plugins like mkdocs-exclude. Content will be included by default.
+title: Inaugural Post: A Glimpse Inside My Mind
 ---
 Welcome to this repository - fair warning: it's going to be beautifully chaotic. Like \[Gwern's digital garden\]([https://www.gwern.net/](https://www.gwern.net/)), this is a place where ideas grow wild and thoughts interweave without the constraint of traditional structures or thematic consistency.
 
